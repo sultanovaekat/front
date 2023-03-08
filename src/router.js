@@ -14,15 +14,12 @@ export const App = () => {
         if(isLoggedIn) return <PageProducts setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>;
         return <PageLogin  setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn} />;
     }
-
-
         return (
             <Router>
             <Routes>
-
                 <Route path="/login" element={<PageLogin  setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn} />} />
-            <Route path="/products" element={<PageProducts setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>}/>
-            <Route path="/basket" element={<PageBasket setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/> }/>
+             <Route path="/products" element={<PageProducts setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>}/>
+             <Route path="/basket" element={<PageBasket setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/> }/>
                 <Route path="*" element={<StartPage />} />
                 <Route path="/products/admin" element={<PageProducts setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>}/>
         </Routes>

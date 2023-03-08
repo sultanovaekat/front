@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/myApp-1.0-SNAPSHOT/"
+const url = "http://localhost:8080/myApp-1.0-SNAPSHOT/api/"
 export function del(method, URL,header,login) {
     fetch(url+URL, {
         method: method,

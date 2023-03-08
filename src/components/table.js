@@ -12,7 +12,6 @@ const Table = (props) => {
                 console.log(products)}
             else if(props.id === "add") {const products =  await getProducts(localStorage.getItem("JWT"));
                 setFetchedData(products)}
-
             console.log(fetchedData)
         }
         // call the function
@@ -25,6 +24,9 @@ const Table = (props) => {
         <div className="container">
             <div className="table">
                 <div className="table-header">
+                    <div className="header__item">
+                        <div id="id" className="filter__link" href="#">ID</div>
+                    </div>
                     <div className="header__item">
                         <div id="name" className="filter__link" href="#">Name</div>
                     </div>
@@ -40,6 +42,7 @@ const Table = (props) => {
                 </div>
                 <p id="notification">{props.data}</p>
                 <div className="table-buttons">
+                    {props.button}
                     <input type="button" value={props.value} id={props.id} onClick={props.onClick}></input>
                 </div>
             </div>

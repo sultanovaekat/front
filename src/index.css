@@ -90,9 +90,9 @@ input[type=button] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 370px;
+  width: 400px;
   background: #95c09c;
-  padding: 18px 0;
+  padding: 20px 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }

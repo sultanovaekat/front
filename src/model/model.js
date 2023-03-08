@@ -24,7 +24,7 @@ class Product {
 
 export function async_getProducts(object) {
     return new Promise((resolve) => {
-        post("POST", "api/products", "text/plain;charset=UTF-8", object)
+        post("POST", "products", "text/plain;charset=UTF-8", object)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
@@ -35,7 +35,7 @@ export function async_getProducts(object) {
 
 export function async_getBasket(object) {
     return new Promise((resolve) => {
-        post("POST", "api/basket", "text/plain;charset=UTF-8", object)
+        post("POST", "basket", "text/plain;charset=UTF-8", object)
             .then((response) => response.json())
             .then((data) => {
                 resolve(_response(data));
@@ -45,7 +45,7 @@ export function async_getBasket(object) {
 
 export function async_login(object) {
     return new Promise((resolve) => {
-        post("POST", "api/login", "application/json;charset=UTF-8", object)
+        post("POST", "login", "application/json;charset=UTF-8", object)
             .then((response) => response.json())
             .then((data) => {
                 resolve((data));
@@ -54,22 +54,20 @@ export function async_login(object) {
 }
 
 export function addProductToBasket(id, userName) {
-    let URL = "api/basket/adding/" + id;
+    let URL = "basket/adding/" + id;
         put("PUT", URL,"text/plain;charset=UTF-8", userName)
 
 
 }
 
 export function delProductFromBasket(id, userName) {
-    let URL = "api/basket/deleting/" + id;
-
-        del("DELETE", URL, "text/plain;charset=UTF-8", userName)
-
+    let URL = "basket/deleting/" + id;
+        del("PUT", URL, "text/plain;charset=UTF-8", userName)
 
 }
 
 export function addProductToProducts(id) {
-    URL = "api/adding/" + id;
+    URL = "adding/" + id;
 
     return new Promise((resolve) => {
         put("PUT", URL)

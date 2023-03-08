@@ -18,13 +18,14 @@ const PageProducts = (props) => {
         }
         setData("Товары успешно добавлены")
     }
+    function toBasketOnClick(){
+        navigator("/basket")
+    }
   return (
         <div>
             <input type="button" id="logout" value="logout" onClick={LogoutOnClick}></input>
-            <input type="button" id="to-basket" value="to basket" onClick={addToBasketOnClick}/>
-
+            <input type="button" id="to-basket" value="to basket" onClick={toBasketOnClick}/>
             <Table id ={"add"} value={"add to basket"} data={data} onClick={addToBasketOnClick}/>
-
         </div>
     );
 };

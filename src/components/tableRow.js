@@ -6,12 +6,14 @@ const TableRow = ({val}) => {
 
 
     const {
+        _id,
         _name,
         _parametrs,
         _total
     } = val
     return (
         <div className="table-row"  style={{background:color}} onClick={()=>{setColor("rgb(187, 216, 192)");}}>
+            <div className="table-data">{val._id}</div>
             <div className="table-data">{val._name}</div>
             <div className="table-data">{val._parametrs}</div>
             <div className="table-data">{val._total}</div>
