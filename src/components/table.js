@@ -4,20 +4,13 @@ import TableRow from "./tableRow";
 
 const Table = (props) => {
 
-    function delOnClick(){
-        let tr = document.querySelectorAll('.table-row');
-        for (let i = 0; i < tr.length; i++) {
-            if (tr[i].style.backgroundColor == 'rgb(187, 216, 192)')
-                delProductFromBasket(i + 1,"luisa");
-        }
-    }
     const [fetchedData, setFetchedData] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
             if(props.id === "del"){const products =  await getBasket("luisa");
                 setFetchedData(products)
                 console.log(products)}
-            else if(props.id === "add") {const products =  await getProducts(localStorage.getItem("hash"));
+            else if(props.id === "add") {const products =  await getProducts(localStorage.getItem("JWT"));
                 setFetchedData(products)}
 
             console.log(fetchedData)
@@ -45,8 +38,9 @@ const Table = (props) => {
                 <div className="table-content">
                     {fetchedData.map((val, key) => <TableRow key={key} val={val} />)}
                 </div>
+                <p id="notification">{props.data}</p>
                 <div className="table-buttons">
-                    <input type="button" value={props.value} id={props.id} onClick={delOnClick}></input>
+                    <input type="button" value={props.value} id={props.id} onClick={props.onClick}></input>
                 </div>
             </div>
         </div>

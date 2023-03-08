@@ -64,6 +64,7 @@ table {
 .table-content .table-row:last-child {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+
 }
 
 tr {
@@ -106,7 +107,10 @@ input[type=button] {
   padding: 18px 30px;
   background-color: #EEEEEE;
 }
-
+#notification{
+  color: black;
+  margin: 0 0;
+}
 .table-row:nth-of-type(odd) {
   background: #EEEEEE;
 }

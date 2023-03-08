@@ -1,26 +1,32 @@
 import React, {useEffect, useState} from 'react';
-import {async_getBasket as getBasket} from "../model/model";
+import {addProductToBasket} from "../model/model";
 import Table from "../components/table";
 import {useNavigate} from "react-router-dom";
 
 const PageProducts = (props) => {
-    const navigate = useNavigate();
-    function logoutOnClick(){
+    const [data, setData] = useState('');
+    const navigator = useNavigate()
+    function LogoutOnClick(){
         localStorage.clear();
-        props.setLoggedIn(false)
+        navigator("/login")
     }
-    function addToBasketOnClick(){
-
-
+    const addToBasketOnClick = async () => {
+        let tr = document.querySelectorAll('.table-row');
+        for (let i = 0; i < tr.length; i++) {
+            if (tr[i].style.backgroundColor == 'rgb(187, 216, 192)')
+                addProductToBasket(i + 1,localStorage.getItem('login'));
+        }
+        setData("Товары успешно добавлены")
     }
-    if(props.isLoggedIn){return (
+  return (
         <div>
-            <input type="button" id="logout" value="logout" onClick={logoutOnClick}></input>
+            <input type="button" id="logout" value="logout" onClick={LogoutOnClick}></input>
             <input type="button" id="to-basket" value="to basket" onClick={addToBasketOnClick}/>
-            <Table id ={"add"} value={"add to basket"}/>
+
+            <Table id ={"add"} value={"add to basket"} data={data} onClick={addToBasketOnClick}/>
+
         </div>
-    );}
-    else navigate('/login')
+    );
 };
 
 export default PageProducts;

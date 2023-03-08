@@ -9,7 +9,13 @@ import {
 
 export const App = () => {
 
-        const [isLoggedIn, setLoggedIn] = useState(false);
+        const [isLoggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem('isLoggedIn')));
+        function StartPage(){
+        if(isLoggedIn) return <PageProducts setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>;
+        return <PageLogin  setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn} />;
+    }
+
+
         return (
             <Router>
             <Routes>
@@ -17,11 +23,12 @@ export const App = () => {
                 <Route path="/login" element={<PageLogin  setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn} />} />
             <Route path="/products" element={<PageProducts setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>}/>
             <Route path="/basket" element={<PageBasket setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/> }/>
-                <Route path="*" element={<PageLogin  setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>} />
+                <Route path="*" element={<StartPage />} />
+                <Route path="/products/admin" element={<PageProducts setLoggedIn={setLoggedIn} isLoggedIn={isLoggedIn}/>}/>
         </Routes>
             </Router>)
 
 
     }
 
-;
+

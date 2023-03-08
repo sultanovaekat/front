@@ -46,26 +46,25 @@ export function async_getBasket(object) {
 export function async_login(object) {
     return new Promise((resolve) => {
         post("POST", "api/login", "application/json;charset=UTF-8", object)
-            .then(response => {
-                resolve(response.text())
+            .then((response) => response.json())
+            .then((data) => {
+                resolve((data));
             });
     });
 }
 
 export function addProductToBasket(id, userName) {
-    let URL = "api/adding/" + id;
-    put("PUT", URL,"text/plain;charset=UTF-8", userName);
+    let URL = "api/basket/adding/" + id;
+        put("PUT", URL,"text/plain;charset=UTF-8", userName)
+
 
 }
 
 export function delProductFromBasket(id, userName) {
     let URL = "api/basket/deleting/" + id;
-    return new Promise((resolve) => {
+
         del("DELETE", URL, "text/plain;charset=UTF-8", userName)
-            .then(response => {
-                resolve(response.text())
-            });
-    });
+
 
 }
 
@@ -83,11 +82,8 @@ export function addProductToProducts(id) {
 
 export function delProductFromProducts(id) {
     URL = "api/basket/deleting/"+id;
-    return new Promise((resolve) => {
     del("DELETE", URL)  
-    .then(response => {
-        resolve(response.text())
-    });})
+
 }
 
 function _response(p) {
