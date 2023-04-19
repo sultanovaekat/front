@@ -1,9 +1,7 @@
 const url = "http://localhost:8080/myApp-1.0-SNAPSHOT/api/"
-export function del(method, URL,header,login) {
+export function del(method, URL) {
     fetch(url+URL, {
-        method: method,
-        headers: { 'Content-Type': header },
-        body: login
+        method: method
     });
 }
 export function put(method, URL, header,login) {
@@ -20,6 +18,22 @@ export function post(method, URL, header, object) {
         headers: { 'Content-Type': header },
         body: object
     })
+}
+export function get(method, URL) {
+    return fetch(url+URL, {
+        method: method
+    })
+}
+export function Websocket(func){
+    let wsID = localStorage.getItem("login")
+    let ws = new WebSocket('ws://localhost:8080/myApp-1.0-SNAPSHOT/delivery');
+    ws.onopen = () => {
+        ws.send(wsID);
+    };
+    ws.onmessage = () => {
+        func();
+        ws.close();
+    }
 }
 // all "/login""/products"
 // admin "/products/adding" "/products/deleting/{id}"

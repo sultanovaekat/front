@@ -28,7 +28,7 @@ header {
 }
 
 .container {
-  max-width: 1000px;
+  max-width: 800px;
   margin-right: auto;
   margin-left: auto;
   display: -webkit-box;
@@ -40,7 +40,7 @@ header {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 70vh;
 }
 
 table {
@@ -84,6 +84,22 @@ input[type=button] {
   background: #e6b3ec;
   border-radius: 20px;
 }
+header input[type=button]  {
+  font-weight: bold;
+  color: #95c09c;
+  margin-left: 29px;
+  margin-bottom: 10px;
+  border: none;
+  background: whitesmoke;
+  border-radius: 20px;
+  max-height: 40px;
+}
+.containerAdding{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 150px 600px;
+}
 
 .table-header {
   color: white;
@@ -95,6 +111,30 @@ input[type=button] {
   padding: 20px 10px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+#logout{
+  background-image: url(svg/logout.svg) ;
+  background-repeat: no-repeat;
+  transform: rotate(180deg);
+  background-position: center;
+  background-size: contain;
+
+}
+#to-basket{
+  background-image: url(svg/basket.svg) ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.menu{
+  display: flex;
+  flex-direction: column;
+}
+#to-delivery{
+  background-image: url(svg/delivery.svg) ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .table-row {
