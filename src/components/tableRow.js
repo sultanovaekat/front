@@ -17,7 +17,7 @@ if (val.parametrs){
 }
 else {
     let status
-    if (val._status == true){status="delivered"}else {status="on the way"}
+    if (val._status == "true"){status="delivered"}else {status="on the way"}
     return (
     <div className="table-row"  style={{background:color}} onClick={()=>{setColor("rgb(187, 216, 192)");}}>
         <div className="table-data">{val.id}</div>

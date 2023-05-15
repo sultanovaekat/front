@@ -6,27 +6,21 @@ import {
     async_getOrdersUser
 } from './../model/model.js';
 import TableRow from "./tableRow";
+import {webSocket} from "../websocket/websocket";
 
 const Table = (props) => {
     const [fetchedData, setFetchedData] = useState([]);
-    async function tableOrders(user){
-        const orders = await async_getOrdersUser(user)
+    async function tableOrders(){
+        const orders = await async_getOrdersUser(localStorage.getItem("login"))
         setFetchedData(orders)
-        let wsID = localStorage.getItem("login")
-        let ws = new WebSocket('ws://localhost:8080/myApp-1.0-SNAPSHOT/delivery');
-        ws.onopen = () => {
-            ws.send(wsID);
-        };
-        ws.onmessage = () => {
-            tableOrders();
-            ws.close();
-        }
+        webSocket(tableOrders)
         // Websocket(tableOrders())
     }
     useEffect(() => {
         const fetchData = async () => {
-            if(props.id === "del"){const products =  await getBasket("luisa");
+            if(props.id === "del"){const products =  await getBasket(localStorage.getItem("login"));
                 setFetchedData(products)
+                console.log(products)
                 }
             else if(props.id === "add" || props.id === "delProduct") {const products =  await getProducts(localStorage.getItem("JWT"));
                 setFetchedData(products)
@@ -35,13 +29,13 @@ const Table = (props) => {
                 setFetchedData(orders)
             }
             else if (props.id === "buy"){
-              await tableOrders(localStorage.getItem("login"));return
+                await tableOrders();return
             }
         }
 
             fetchData();
 
-    }, [fetchedData]);
+    }, [props.data]);//попробовать глобальную
 
     let keys = [];
     for(let k in fetchedData[0]) keys.push(k);

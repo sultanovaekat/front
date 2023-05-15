@@ -3,6 +3,8 @@ import { addProductToProducts} from "../../model/model";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {ACTIONS_CREATORS} from "../../redux/actions";
+import {useLoginDispatcher} from "../../mobx/store";
+import {webSocket} from "../../websocket/websocket";
 
 const PageAddingProduct = () => {
     const [data, setData] = useState('');
@@ -10,9 +12,14 @@ const PageAddingProduct = () => {
     const [name, setName] = useState('');
     const [parametrs, setParametrs] = useState('');
     const [total, setTotal] = useState('');
+    const dispatch = useLoginDispatcher();
 
     const navigator = useNavigate();
-    const dispatch = useDispatch();
+    const notification = (text)=>{
+        alert(text)
+    }
+    webSocket(notification)
+    // const dispatch = useDispatch();
     const addOnClick = async () => {
         try {
             const answer = await addProductToProducts(
@@ -37,8 +44,9 @@ const PageAddingProduct = () => {
         navigator("/admin/products");
     }
     function logoutOnClick(){
-        let action = ACTIONS_CREATORS.LOGOUT();
-        dispatch(action)
+        // let action = ACTIONS_CREATORS.LOGOUT();
+        // dispatch(action)
+        dispatch(false)
         localStorage.clear();
         navigator("/login");
     }
@@ -70,7 +78,7 @@ const PageAddingProduct = () => {
             <input type="text" id="parametrsAdd" placeholder="parametrs" onChange={handleParametrsChange}></input>
             <input type="text" id="totalAdd" placeholder="total" onChange={handleTotalChange}></input>
             <input type="button" id="addToProduct" value="add" onClick={addOnClick}></input>
-            <p  >{data}</p></div>
+            <p>{data}</p></div>
             </div>
     );
 };
