@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { async_login } from '../model/model';
+import { async_login } from '../../model/model';
 import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../redux/actions";
-import {useLoginDispatcher} from "../mobx/store";
+import {ACTIONS_CREATORS} from "../../state/redux/actions";
+import {useLoginDispatcher} from "../../state/mobx/store";
 
 const PageLogin = (props) => {
     const navigate = useNavigate();

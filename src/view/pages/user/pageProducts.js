@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {addProductToBasket} from "../../model/model";
+import {addProductToBasket} from "../../../model/model";
 import Table from "../../components/table";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../redux/actions";
-import {useLoginDispatcher} from "../../mobx/store";
+import {ACTIONS_CREATORS} from "../../../state/redux/actions";
+import {useLoginDispatcher} from "../../../state/mobx/store";
 
 const PageProducts = () => {
     // const dispatch = useDispatch();

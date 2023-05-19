@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import Table from "../../components/table";
-import {delProductFromBasket} from "../../model/model";
+import {delProductFromBasket} from "../../../model/model";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../redux/actions";
-import {useLoginDispatcher} from "../../mobx/store";
+import {ACTIONS_CREATORS} from "../../../state/redux/actions";
+import {useLoginDispatcher} from "../../../state/mobx/store";
 
 const PageBasket = () => {
     const [data, setData] = useState('');

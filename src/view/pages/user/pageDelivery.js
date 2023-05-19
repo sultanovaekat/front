@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {addProductToBasket, changeStatusDelivery} from "../../model/model";
+import {addProductToBasket, changeStatusDelivery} from "../../../model/model";
 import Table from "../../components/table";
 import {useNavigate} from "react-router-dom";
-import {ACTIONS_CREATORS} from "../../redux/actions";
+import {ACTIONS_CREATORS} from "../../../state/redux/actions";
 import {useDispatch} from "react-redux";
-import {useLoginDispatcher} from "../../mobx/store";
+import {useLoginDispatcher} from "../../../state/mobx/store";
 
 
 const PageDelivery = () => {

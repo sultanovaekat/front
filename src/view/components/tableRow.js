@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {addProductToBasket} from "../model/model";
 
 const TableRow = ({val}) => {
     const [color,setColor]=useState('#EEEEE');

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import { addProductToProducts} from "../../model/model";
+import { addProductToProducts} from "../../../model/model";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../redux/actions";
-import {useLoginDispatcher} from "../../mobx/store";
-import {webSocket} from "../../websocket/websocket";
+import {ACTIONS_CREATORS} from "../../../state/redux/actions";
+import {useLoginDispatcher} from "../../../state/mobx/store";
+import {webSocket} from "../../../websocket/websocket";
 
 const PageAddingProduct = () => {
     const [data, setData] = useState('');

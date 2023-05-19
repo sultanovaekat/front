@@ -4,9 +4,9 @@ import {
     async_getBasket as getBasket,
     async_getOrders,
     async_getOrdersUser
-} from './../model/model.js';
+} from '../../model/model.js';
 import TableRow from "./tableRow";
-import {webSocket} from "../websocket/websocket";
+import {webSocket} from "../../websocket/websocket";
 
 const Table = (props) => {
     const [fetchedData, setFetchedData] = useState([]);
@@ -14,7 +14,6 @@ const Table = (props) => {
         const orders = await async_getOrdersUser(localStorage.getItem("login"))
         setFetchedData(orders)
         webSocket(tableOrders)
-        // Websocket(tableOrders())
     }
     useEffect(() => {
         const fetchData = async () => {

@@ -24,7 +24,7 @@ header {
 
 @font-face {
   font-family: Comfortaa;
-  src: local("Comfortaa"), local("Comfortaa"), url(./fonts/Comfortaa.ttf);
+  src: local("Comfortaa"), local("Comfortaa"), url(view/fonts/Comfortaa.ttf);
 }
 
 .container {
@@ -113,7 +113,7 @@ header input[type=button]  {
   border-top-right-radius: 10px;
 }
 #logout{
-  background-image: url(svg/logout.svg) ;
+  background-image: url(view/svg/logout.svg) ;
   background-repeat: no-repeat;
   transform: rotate(180deg);
   background-position: center;
@@ -121,7 +121,7 @@ header input[type=button]  {
 
 }
 #to-basket{
-  background-image: url(svg/basket.svg) ;
+  background-image: url(view/svg/basket.svg) ;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -131,7 +131,7 @@ header input[type=button]  {
   flex-direction: column;
 }
 #to-delivery{
-  background-image: url(svg/delivery.svg) ;
+  background-image: url(view/svg/delivery.svg) ;
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;

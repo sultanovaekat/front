@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
-import PageLogin from "./pages/pageLogin";
-import PageBasket from "./pages/user/pageBasket";
-import PageProducts from "./pages/user/pageProducts";
+import PageLogin from "./view/pages/pageLogin";
+import PageBasket from "./view/pages/user/pageBasket";
+import PageProducts from "./view/pages/user/pageProducts";
 import {
     BrowserRouter as
     Router, Routes, Route
 } from 'react-router-dom';
-import PageDeletingProduct from "./pages/admin/pageDeletingProduct";
-import PageAddingProduct from "./pages/admin/pageAddingProduct";
-import PageOrders from "./pages/admin/pageOrders";
-import PageDelivery from "./pages/user/pageDelivery";
+import PageDeletingProduct from "./view/pages/admin/pageDeletingProduct";
+import PageAddingProduct from "./view/pages/admin/pageAddingProduct";
+import PageOrders from "./view/pages/admin/pageOrders";
+import PageDelivery from "./view/pages/user/pageDelivery";
 import {useSelector} from 'react-redux';
-import {getLoginStatus} from "./mobx/store";
+import {getLoginStatus} from "./state/mobx/store";
 
 
 export const App = () => {
