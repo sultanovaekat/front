@@ -1,4 +1,23 @@
 import { del, post, put, get} from "../transport/request.js";
+import {useDispatch} from "react-redux";
+import {ACTIONS_CREATORS} from "../../state/redux/actions";
+import {useLoginDispatcher} from "../../state/mobx/store";
+import {webSocket} from "../transport/websocket/websocket";
+
+const dispatch = useDispatch();
+// const dispatch = useLoginDispatcher();
+
+export function storeSetLogin(){
+    let action = ACTIONS_CREATORS.LOGIN();
+    dispatch(action)
+    // dispatch(true)
+}
+
+export function storeSetLogout(){
+    let action = ACTIONS_CREATORS.LOGOUT();
+    dispatch(action)
+    // dispatch(false)
+}
 
 class Product {
     constructor(id, name, parametrs, total) {
@@ -118,6 +137,17 @@ function _responseO(p) {
         }
         return orders;
     }
+}
+
+export function webSocketNotification(){
+    const notification = (text)=>{
+        alert(text)
+    }
+    webSocket(notification)
+}
+
+export function webSocketTableUpdate(func){
+    webSocket(func)
 }
 // all "/login""/products"
 // admin "/products/adding" "/products/deleting/{id}"

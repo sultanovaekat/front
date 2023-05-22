@@ -1,20 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {addProductToBasket} from "../../../model/model";
+import React, {useState} from 'react';
+import {addProductToBasket, storeSetLogout} from "../../../model/model";
 import Table from "../../components/table";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../../state/redux/actions";
-import {useLoginDispatcher} from "../../../state/mobx/store";
 
 const PageProducts = () => {
-    // const dispatch = useDispatch();
     const [data,setData]=useState();
-    const dispatch = useLoginDispatcher();
+    // const dispatch = useLoginDispatcher();
     const navigator = useNavigate()
     function LogoutOnClick(){
-        // let action = ACTIONS_CREATORS.LOGOUT();
-        // dispatch(action)
-        dispatch(false)
+        storeSetLogout()
         localStorage.clear();
         navigator("/login")
     }

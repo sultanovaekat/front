@@ -5,8 +5,6 @@ export function webSocket(func){
         ws.send(wsID);
     };
     ws.onmessage = (event) => {
-        func(event.data);
-        ws.close();
+        ws.close();func(event.data);
     }
-
 }

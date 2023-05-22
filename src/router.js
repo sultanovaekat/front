@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PageLogin from "./view/pages/pageLogin";
 import PageBasket from "./view/pages/user/pageBasket";
 import PageProducts from "./view/pages/user/pageProducts";
@@ -15,9 +15,9 @@ import {getLoginStatus} from "./state/mobx/store";
 
 
 export const App = () => {
-    // const isLoggedIn = useSelector(state => state.isLoggedIn);
+    const isLoggedIn = useSelector(state => state.isLoggedIn);
 
-let isLoggedIn= getLoginStatus()
+// let isLoggedIn= getLoginStatus()
 
     function StartPage() {
         if (isLoggedIn) return <PageProducts />;

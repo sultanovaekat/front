@@ -1,18 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { async_login } from '../../model/model';
-import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../state/redux/actions";
-import {useLoginDispatcher} from "../../state/mobx/store";
+import {async_login, storeSetLogin} from '../../model/model';
 
 const PageLogin = (props) => {
     const navigate = useNavigate();
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [data, setData] = useState('');
-    // const dispatch = useDispatch();
-    const dispatch = useLoginDispatcher();
-
 
     const AuthOnClick = async () => {
         try {
@@ -29,9 +23,7 @@ const PageLogin = (props) => {
                 localStorage.setItem('login', login);
                 localStorage.setItem('JWT', tok.token);
                 localStorage.setItem('role', tok.role);
-                // let action = ACTIONS_CREATORS.LOGIN();
-                // dispatch(action)
-                dispatch(true)
+                storeSetLogin();
                 navigate(`/${tok.role}/products`);
             }
         } catch (error) {

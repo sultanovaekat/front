@@ -1,10 +1,6 @@
 import React, {useState} from 'react';
-import { addProductToProducts} from "../../../model/model";
+import {addProductToProducts, storeSetLogout, webSocketNotification} from "../../../model/model";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../../state/redux/actions";
-import {useLoginDispatcher} from "../../../state/mobx/store";
-import {webSocket} from "../../../websocket/websocket";
 
 const PageAddingProduct = () => {
     const [data, setData] = useState('');
@@ -12,14 +8,9 @@ const PageAddingProduct = () => {
     const [name, setName] = useState('');
     const [parametrs, setParametrs] = useState('');
     const [total, setTotal] = useState('');
-    const dispatch = useLoginDispatcher();
-
     const navigator = useNavigate();
-    const notification = (text)=>{
-        alert(text)
-    }
-    webSocket(notification)
-    // const dispatch = useDispatch();
+    webSocketNotification();
+
     const addOnClick = async () => {
         try {
             const answer = await addProductToProducts(
@@ -44,9 +35,7 @@ const PageAddingProduct = () => {
         navigator("/admin/products");
     }
     function logoutOnClick(){
-        // let action = ACTIONS_CREATORS.LOGOUT();
-        // dispatch(action)
-        dispatch(false)
+        storeSetLogout();
         localStorage.clear();
         navigator("/login");
     }

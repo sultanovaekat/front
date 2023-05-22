@@ -1,16 +1,11 @@
 import React, {useState} from 'react';
 import Table from "../../components/table";
-import {delProductFromBasket} from "../../../model/model";
+import {delProductFromBasket, storeSetLogout} from "../../../model/model";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../../state/redux/actions";
-import {useLoginDispatcher} from "../../../state/mobx/store";
 
 const PageBasket = () => {
     const [data, setData] = useState('');
       const navigator = useNavigate();
-    const dispatch = useLoginDispatcher();
-    // const dispatch = useDispatch();
     function delOnClick(){
         let tr = document.querySelectorAll('.table-row');
         for (let i = 0; i < tr.length; i++) {
@@ -23,9 +18,7 @@ const PageBasket = () => {
         navigator("/user/products");
     }
     function logoutOnClick(){
-        // let action = ACTIONS_CREATORS.LOGOUT();
-        // dispatch(action)
-        dispatch(false)
+        storeSetLogout();
         localStorage.clear();
         navigator("/login");
     }

@@ -1,26 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {changeStatusDelivery} from "../../../model/model";
+import React, {useState} from 'react';
+import {changeStatusDelivery, storeSetLogout, webSocketNotification} from "../../../model/model";
 import Table from "../../components/table";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../../state/redux/actions";
-import {useLoginDispatcher} from "../../../state/mobx/store";
-import {webSocket} from "../../../websocket/websocket";
-
 
 const PageOrders= () => {
     const navigator = useNavigate()
-    // const dispatch = useDispatch();
-    const dispatch = useLoginDispatcher();
     const [data, setData]= useState('')
-    const notification = (text)=>{
-        alert(text)
-    }
-    webSocket(notification)
+    webSocketNotification();
+
     function LogoutOnClick() {
-        // let action = ACTIONS_CREATORS.LOGOUT();
-        // dispatch(action)
-        dispatch(false)
+        storeSetLogout();
         localStorage.clear();
         navigator("/login")
     }

@@ -1,25 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import {delProductFromProducts} from "../../../model/model";
+import React, {useState} from 'react';
+import {delProductFromProducts, storeSetLogout, webSocketNotification} from "../../../model/model";
 import Table from "../../components/table";
 import {useNavigate} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {ACTIONS_CREATORS} from "../../../state/redux/actions";
-import {useLoginDispatcher} from "../../../state/mobx/store";
-import {webSocket} from "../../../websocket/websocket";
 
 const PageDeletingProduct = () => {
     const [data,setData]=useState('');
     const navigator = useNavigate()
-    // const dispatch = useDispatch();
-    const dispatch = useLoginDispatcher();
-    const notification = (text)=>{
-        alert(text)
-    }
-    webSocket(notification)
+
+    webSocketNotification();
+
     function LogoutOnClick(){
-        // let action = ACTIONS_CREATORS.LOGOUT();
-        // dispatch(action)
-        dispatch(false)
+        storeSetLogout();
         localStorage.clear();
         navigator("/login")
     }
